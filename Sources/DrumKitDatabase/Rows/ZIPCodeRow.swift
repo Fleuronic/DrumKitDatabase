@@ -14,6 +14,7 @@ public struct ZIPCodeRow {
 	private let code: String
 }
 
+// MARK: -
 public extension ZIPCodeRow {
 	init(
 		id: ZIPCode.ID?,

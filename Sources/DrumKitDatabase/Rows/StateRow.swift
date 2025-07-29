@@ -16,6 +16,7 @@ public struct StateRow {
 	private let country: Country.IDFields
 }
 
+// MARK: -
 public extension StateRow {
 	init(
 		id: State.ID?,
