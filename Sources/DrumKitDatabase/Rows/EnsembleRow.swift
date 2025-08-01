@@ -19,11 +19,11 @@ public struct EnsembleRow {
 // MARK: -
 public extension EnsembleRow {
 	init(
-		id: Ensemble.ID, 
+		id: Ensemble.ID? = nil, 
 		name: String? = nil, 
 		location: Location.IDFields? = nil
 	) {
-		self.id = id
+		self.id = id ?? .null
 		self.name = name ?? ""
 		self.location = location ?? .null
 	}

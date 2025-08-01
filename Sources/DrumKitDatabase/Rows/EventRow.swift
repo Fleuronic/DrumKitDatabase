@@ -26,14 +26,14 @@ public struct EventRow {
 public extension EventRow {
 	init(
 		id: Event.ID?,
-		date: Date? = nil,
+		date: Date,
 		location: Location.IDFields? = nil,
 		circuit: Circuit.IDFields? = nil,
 		show: Show.IDFields? = nil,
 		venue: Venue.IDFields? = nil
 	) {
 		self.id = id ?? .null
-		self.date = date ?? Date()
+		self.date = date
 		self.location = location ?? .null
 		self.circuit = circuit ?? .null
 		self.show = show ?? .null

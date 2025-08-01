@@ -19,11 +19,11 @@ public struct CorpsRow {
 // MARK: -
 public extension CorpsRow {
 	init(
-		id: Corps.ID, 
+		id: Corps.ID? = nil, 
 		name: String? = nil, 
 		location: Location.IDFields? = nil
 	) {
-		self.id = id
+		self.id = id ?? .null
 		self.name = name ?? ""
 		self.location = location ?? .null
 	}

@@ -52,8 +52,8 @@ extension SlotRow: Row {
 		[
 			\.value.time == time,
 			\.event == event.id,
-			\.feature == feature.id,
-			\.performance == performance.id
+			\.performance == performance.id,
+			\.feature == feature.id
 		]
 	}
 }
