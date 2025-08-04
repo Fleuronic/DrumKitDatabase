@@ -3,36 +3,19 @@
 import Catena
 import Schemata
 import PersistDB
-import struct DrumKit.Event
-import struct DrumKit.Corps
-import struct DrumKit.Ensemble
-import struct DrumKit.Circuit
-import struct DrumKit.Location
-import struct DrumKit.State
-import struct DrumKit.Location
-import struct DrumKit.Show
-import struct DrumKit.Venue
-import struct DrumKit.Address
-import struct DrumKit.ZIPCode
-import struct DrumKit.Slot
-import struct DrumKit.Performance
-import struct DrumKit.Placement
-import struct DrumKit.Division
-import struct DrumKit.Feature
-import protocol DrumKitService.EventFields
-import protocol DrumKitService.ShowFields
-import protocol DrumKitService.LocationFields
-import protocol DrumKitService.SlotFields
-import protocol DrumKitService.CorpsFields
-import protocol DrumKitService.FeatureFields
+import DrumKit
+import DrumKitService
 import protocol Catenoid.Database
 import protocol Catenoid.Fields
 import protocol Caesura.Storage
 
 public struct Database<
 	EventSpecifiedFields: EventFields & Fields<Event.Identified>,
-	ShowSpecifiedFields: ShowFields & Fields<Show.Identified>,
 	LocationSpecifiedFields: LocationFields & Fields<Location.Identified>,
+	StateSpecifiedFields: StateFields & Fields<State.Identified>,
+	CountrySpecifiedFields: CountryFields & Fields<Country.Identified>,
+	CircuitSpecifiedFields: CircuitFields & Fields<Circuit.Identified>,
+	ShowSpecifiedFields: ShowFields & Fields<Show.Identified>,
 	SlotSpecifiedFields: SlotFields & Fields<Slot.Identified>,
 	CorpsSpecifiedFields: CorpsFields & Fields<Corps.Identified>,
 	FeatureSpecifiedFields: FeatureFields & Fields<Feature.Identified>
@@ -43,19 +26,11 @@ public struct Database<
 public extension Database {
 	func specifyingEventFields<Fields>(_: Fields.Type) -> Database<
 		Fields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
 		ShowSpecifiedFields,
-		LocationSpecifiedFields,
-		SlotSpecifiedFields,
-		CorpsSpecifiedFields,
-		FeatureSpecifiedFields
-	> {
-		.init(store: store)
-	}
-
-	func specifyingShowFields<Fields>(_: Fields.Type) -> Database<
-		EventSpecifiedFields,
-		Fields,
-		LocationSpecifiedFields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields
@@ -65,7 +40,66 @@ public extension Database {
 
 	func specifyingLocationFields<Fields>(_: Fields.Type) -> Database<
 		EventSpecifiedFields,
+		Fields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
 		ShowSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingStateFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		Fields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingCountryFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		Fields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingCircuitFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		Fields,
+		ShowSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingShowFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
 		Fields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
@@ -76,8 +110,11 @@ public extension Database {
 
 	func specifyingSlotFields<Fields>(_: Fields.Type) -> Database<
 		EventSpecifiedFields,
-		ShowSpecifiedFields,
 		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
 		Fields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields
@@ -87,8 +124,11 @@ public extension Database {
 
 	func specifyingCorpsFields<Fields>(_: Fields.Type) -> Database<
 		EventSpecifiedFields,
-		ShowSpecifiedFields,
 		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
 		SlotSpecifiedFields,
 		Fields,
 		FeatureSpecifiedFields
@@ -98,8 +138,11 @@ public extension Database {
 
 	func specifyingFeatureFields<Fields>(_: Fields.Type) -> Database<
 		EventSpecifiedFields,
-		ShowSpecifiedFields,
 		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		Fields
@@ -111,8 +154,11 @@ public extension Database {
 // MARK: -
 public extension Database<
 	Event.IDFields,
-	Show.IDFields,
 	Location.IDFields,
+	State.IDFields,
+	Country.IDFields,
+	Circuit.IDFields,
+	Show.IDFields,
 	Slot.IDFields,
 	Corps.IDFields,
 	Feature.IDFields
@@ -127,17 +173,17 @@ extension Database: Catenoid.Database {
 	public static var types: [any AnyModel.Type] {
 		[
 			Event.Identified.self,
-			Corps.Identified.self,
-			Ensemble.Identified.self,
-			Circuit.Identified.self,
 			Location.Identified.self,
 			State.Identified.self,
-			Location.Identified.self,
-			Show.Identified.self,
-			Venue.Identified.self,
 			Address.Identified.self,
 			ZIPCode.Identified.self,
+			Country.Identified.self,
+			Circuit.Identified.self,
+			Show.Identified.self,
+			Venue.Identified.self,
 			Slot.Identified.self,
+			Corps.Identified.self,
+			Ensemble.Identified.self,
 			Performance.Identified.self,
 			Placement.Identified.self,
 			Division.Identified.self,

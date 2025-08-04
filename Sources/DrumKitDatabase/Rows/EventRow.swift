@@ -58,8 +58,9 @@ extension EventRow: Row {
 		[
 			\.value.date == date,
 			\.location == location.id,
-			\.venue == venue.id,
-			\.show == show.id
+			\.circuit == circuit.id,
+			\.show == show.id,
+			\.venue == venue.id
 		]
 	}
 }
