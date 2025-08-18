@@ -16,9 +16,13 @@ public struct Database<
 	CountrySpecifiedFields: CountryFields & Fields<Country.Identified>,
 	CircuitSpecifiedFields: CircuitFields & Fields<Circuit.Identified>,
 	ShowSpecifiedFields: ShowFields & Fields<Show.Identified>,
+	VenueSpecifiedFields: VenueFields & Fields<Venue.Identified>,
+	AddressSpecifiedFields: AddressFields & Fields<Address.Identified>,
+	ZIPCodeSpecifiedFields: ZIPCodeFields & Fields<ZIPCode.Identified>,
 	SlotSpecifiedFields: SlotFields & Fields<Slot.Identified>,
 	CorpsSpecifiedFields: CorpsFields & Fields<Corps.Identified>,
-	FeatureSpecifiedFields: FeatureFields & Fields<Feature.Identified>
+	FeatureSpecifiedFields: FeatureFields & Fields<Feature.Identified>,
+	EnsembleSpecifiedFields: EnsembleFields & Fields<Ensemble.Identified>
 >: @unchecked Sendable {
 	public let store: Store<ReadWrite>
 }
@@ -31,9 +35,13 @@ public extension Database {
 		CountrySpecifiedFields,
 		CircuitSpecifiedFields,
 		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
-		FeatureSpecifiedFields
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -45,9 +53,13 @@ public extension Database {
 		CountrySpecifiedFields,
 		CircuitSpecifiedFields,
 		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
-		FeatureSpecifiedFields
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -59,9 +71,13 @@ public extension Database {
 		CountrySpecifiedFields,
 		CircuitSpecifiedFields,
 		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
-		FeatureSpecifiedFields
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -73,9 +89,13 @@ public extension Database {
 		Fields,
 		CircuitSpecifiedFields,
 		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
-		FeatureSpecifiedFields
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -87,9 +107,13 @@ public extension Database {
 		CountrySpecifiedFields,
 		Fields,
 		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
-		FeatureSpecifiedFields
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -101,9 +125,67 @@ public extension Database {
 		CountrySpecifiedFields,
 		CircuitSpecifiedFields,
 		Fields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
-		FeatureSpecifiedFields
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingVenueFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		Fields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingAddressFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		Fields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingZIPCodeFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		Fields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -115,9 +197,13 @@ public extension Database {
 		CountrySpecifiedFields,
 		CircuitSpecifiedFields,
 		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
 		Fields,
 		CorpsSpecifiedFields,
-		FeatureSpecifiedFields
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -129,9 +215,13 @@ public extension Database {
 		CountrySpecifiedFields,
 		CircuitSpecifiedFields,
 		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
 		SlotSpecifiedFields,
 		Fields,
-		FeatureSpecifiedFields
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -143,8 +233,30 @@ public extension Database {
 		CountrySpecifiedFields,
 		CircuitSpecifiedFields,
 		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
+		Fields,
+		EnsembleSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingEnsembleFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
 		Fields
 	> {
 		.init(store: store)
@@ -159,9 +271,13 @@ public extension Database<
 	Country.IDFields,
 	Circuit.IDFields,
 	Show.IDFields,
+	Venue.IDFields,
+	Address.IDFields,
+	ZIPCode.IDFields,
 	Slot.IDFields,
 	Corps.IDFields,
-	Feature.IDFields
+	Feature.IDFields,
+	Ensemble.IDFields
 > {
 	init() async {
 		store = try! await Self.createStore(named: "DrumKit")
