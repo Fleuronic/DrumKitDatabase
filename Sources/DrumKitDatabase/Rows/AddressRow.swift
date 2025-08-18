@@ -19,7 +19,6 @@ public struct AddressRow {
 }
 
 public extension AddressRow {
-	// MARK: Initializers
 	init(
 		id: Address.ID?,
 		streetAddress: String?,
