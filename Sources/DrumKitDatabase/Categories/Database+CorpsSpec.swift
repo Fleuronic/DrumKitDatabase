@@ -7,4 +7,5 @@ import protocol DrumKitService.CorpsSpec
 
 extension Database: CorpsSpec where CorpsSpecifiedFields: Decodable {
 	public typealias CorpsList = Results<CorpsSpecifiedFields>
+	public typealias CorpsFetch = SingleResult<CorpsSpecifiedFields?>
 }
