@@ -7,7 +7,7 @@ import protocol Catenoid.Fields
 import protocol DrumKitService.SlotSpec
 
 extension Database: SlotSpec where SlotSpecifiedFields: Decodable {
-	public func listSlots(inEventWith id: Event.ID) async -> Results<SlotSpecifiedFields> {
-		await fetch(where: Slot.Identified.predicate(eventID: id))
+	public func listSlots(in year: Int) async -> Results<SlotSpecifiedFields> {
+		await fetch(where: Slot.Identified.predicate(year: year))
 	}
 }
