@@ -22,7 +22,8 @@ public struct Database<
 	SlotSpecifiedFields: SlotFields & Fields<Slot.Identified>,
 	CorpsSpecifiedFields: CorpsFields & Fields<Corps.Identified>,
 	FeatureSpecifiedFields: FeatureFields & Fields<Feature.Identified>,
-	EnsembleSpecifiedFields: EnsembleFields & Fields<Ensemble.Identified>
+	EnsembleSpecifiedFields: EnsembleFields & Fields<Ensemble.Identified>,
+	DivisionSpecifiedFields: DivisionFields & Fields<Division.Identified>
 >: @unchecked Sendable {
 	public let store: Store<ReadWrite>
 }
@@ -41,7 +42,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -59,7 +61,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -77,7 +80,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -95,7 +99,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -113,7 +118,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -131,7 +137,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -149,7 +156,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -167,7 +175,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -185,7 +194,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -203,7 +213,8 @@ public extension Database {
 		Fields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -221,7 +232,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		Fields,
 		FeatureSpecifiedFields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -239,7 +251,8 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		Fields,
-		EnsembleSpecifiedFields
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -257,6 +270,26 @@ public extension Database {
 		SlotSpecifiedFields,
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
+		Fields,
+		DivisionSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingDivisionFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields,
 		Fields
 	> {
 		.init(store: store)
@@ -277,7 +310,8 @@ public extension Database<
 	Slot.IDFields,
 	Corps.IDFields,
 	Feature.IDFields,
-	Ensemble.IDFields
+	Ensemble.IDFields,
+	Division.IDFields
 > {
 	init() async {
 		store = try! await Self.createStore(named: "DrumKit")
