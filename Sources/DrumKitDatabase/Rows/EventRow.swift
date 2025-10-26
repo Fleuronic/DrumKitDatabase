@@ -17,6 +17,8 @@ public struct EventRow {
 	public let id: Event.ID
 
 	private let date: Date
+	private let detailsURL: URL?
+	private let scoresURL: URL?
 	private let location: Location.IDFields
 	private let circuit: Circuit.IDFields
 	private let show: Show.IDFields
@@ -27,6 +29,8 @@ public extension EventRow {
 	init(
 		id: Event.ID?,
 		date: Date,
+		detailsURL: URL? = nil,
+		scoresURL: URL? = nil,
 		location: Location.IDFields? = nil,
 		circuit: Circuit.IDFields? = nil,
 		show: Show.IDFields? = nil,
@@ -34,6 +38,8 @@ public extension EventRow {
 	) {
 		self.id = id ?? .null
 		self.date = date
+		self.detailsURL = detailsURL
+		self.scoresURL = scoresURL
 		self.location = location ?? .null
 		self.circuit = circuit ?? .null
 		self.show = show ?? .null
@@ -48,7 +54,11 @@ extension EventRow: Row {
 
 	// MARK: Representable
 	public var value: Value {
-		.init(date: date)
+		.init(
+			date: date,
+			detailsURL: detailsURL,
+			scoresURL: scoresURL
+		)
 	}
 
 	// MARK: Model
@@ -57,6 +67,8 @@ extension EventRow: Row {
 	public var valueSet: ValueSet<Event.Identified> {
 		[
 			\.value.date == date,
+			\.value.scoresURL == scoresURL,
+			\.value.detailsURL == detailsURL,
 			\.location == location.id,
 			\.circuit == circuit.id,
 			\.show == show.id,
