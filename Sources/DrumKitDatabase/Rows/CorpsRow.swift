@@ -42,7 +42,11 @@ extension CorpsRow: Row {
 
 	// MARK: Representable
 	public var value: Value {
-		.init(name: name)
+		.init(
+			name: name,
+			url: url,
+			isActive: isActive
+		)
 	}
 
 	// MARK: Model
