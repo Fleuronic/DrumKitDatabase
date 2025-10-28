@@ -13,6 +13,8 @@ public struct CorpsRow {
 	public let id: Corps.ID
 
 	private let name: String
+	private let url: String?
+	private let isActive: Bool
 	private let location: Location.IDFields
 }
 
@@ -21,10 +23,14 @@ public extension CorpsRow {
 	init(
 		id: Corps.ID? = nil, 
 		name: String? = nil, 
+		url: String? = nil, 
+		isActive: Bool = false, 
 		location: Location.IDFields? = nil
 	) {
 		self.id = id ?? .null
 		self.name = name ?? ""
+		self.url = url
+		self.isActive = isActive
 		self.location = location ?? .null
 	}
 }
@@ -45,6 +51,8 @@ extension CorpsRow: Row {
 	public var valueSet: ValueSet<Corps.Identified> {
 		[
 			\.value.name == name,
+			\.value.url == url,
+			\.value.isActive == isActive,
 			\.location == location.id
 		]
 	}
