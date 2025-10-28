@@ -13,7 +13,7 @@ public struct CorpsRow {
 	public let id: Corps.ID
 
 	private let name: String
-	private let url: String?
+	private let url: URL?
 	private let isActive: Bool
 	private let location: Location.IDFields
 }
@@ -23,7 +23,7 @@ public extension CorpsRow {
 	init(
 		id: Corps.ID? = nil, 
 		name: String? = nil, 
-		url: String? = nil, 
+		url: URL? = nil, 
 		isActive: Bool = false, 
 		location: Location.IDFields? = nil
 	) {
