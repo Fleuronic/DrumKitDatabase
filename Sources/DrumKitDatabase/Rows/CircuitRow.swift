@@ -1,5 +1,6 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
+import Foundation
 import PersistDB
 import Identity
 import struct DrumKit.Circuit
@@ -12,6 +13,7 @@ public struct CircuitRow {
 
 	private let name: String
 	private let abbreviation: String
+	private let url: URL?
 }
 
 // MARK: -
@@ -19,11 +21,12 @@ public extension CircuitRow {
 	init(
 		id: Circuit.ID?, 
 		name: String? = nil,
-		abbreviation: String? = nil
+		url: URL? = nil
 	) {
 		self.id = id ?? .null
 		self.name = name ?? ""
 		self.abbreviation = abbreviation ?? ""
+		self.url = url
 	}
 }
 
@@ -36,7 +39,8 @@ extension CircuitRow: Row {
 	public var value: Value {
 		.init(
 			name: name,
-			abbreviation: abbreviation
+			abbreviation: abbreviation,
+			url: url
 		)
 	}
 
@@ -44,9 +48,13 @@ extension CircuitRow: Row {
 	public var identifiedModelID: Circuit.ID? { id }
 
 	public var valueSet: ValueSet<Circuit.Identified> {
-		[
+		var valueSet: ValueSet<Circuit.Identified> = [
 			\.value.name == name,
 			\.value.abbreviation == abbreviation
 		]
+
+		url.map { valueSet = valueSet.update(with: [\.value.url == $0]) }
+
+		return valueSet
 	}
 }
