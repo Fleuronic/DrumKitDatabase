@@ -21,6 +21,7 @@ public extension CircuitRow {
 	init(
 		id: Circuit.ID?, 
 		name: String? = nil,
+		abbreviation: String? = nil,
 		url: URL? = nil
 	) {
 		self.id = id ?? .null
