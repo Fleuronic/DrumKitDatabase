@@ -7,4 +7,5 @@ import protocol DrumKitService.EventSpec
 
 extension Database: EventSpec where EventSpecifiedFields: Decodable {
 	public typealias EventList = Results<EventSpecifiedFields>
+	public typealias EventFetch = SingleResult<EventSpecifiedFields?>
 }

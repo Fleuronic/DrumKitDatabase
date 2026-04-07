@@ -21,10 +21,10 @@ public struct CorpsRow {
 // MARK: -
 public extension CorpsRow {
 	init(
-		id: Corps.ID? = nil, 
-		name: String? = nil, 
-		url: URL? = nil, 
-		isActive: Bool = false, 
+		id: Corps.ID? = nil,
+		name: String? = nil,
+		url: URL? = nil,
+		isActive: Bool = false,
 		location: Location.IDFields? = nil
 	) {
 		self.id = id ?? .null
