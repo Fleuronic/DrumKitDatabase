@@ -23,7 +23,8 @@ public struct Database<
 	CorpsSpecifiedFields: CorpsFields & Fields<Corps.Identified>,
 	FeatureSpecifiedFields: FeatureFields & Fields<Feature.Identified>,
 	EnsembleSpecifiedFields: EnsembleFields & Fields<Ensemble.Identified>,
-	DivisionSpecifiedFields: DivisionFields & Fields<Division.Identified>
+	DivisionSpecifiedFields: DivisionFields & Fields<Division.Identified>,
+	PlacementSpecifiedFields: PlacementFields & Fields<Placement.Identified>
 >: @unchecked Sendable {
 	public let store: Store<ReadWrite>
 }
@@ -43,7 +44,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -62,7 +64,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -81,7 +84,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -100,7 +104,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -119,7 +124,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -138,7 +144,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -157,7 +164,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -176,7 +184,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -195,7 +204,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -214,7 +224,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -233,7 +244,8 @@ public extension Database {
 		Fields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -252,7 +264,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		Fields,
 		EnsembleSpecifiedFields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -271,7 +284,8 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		Fields,
-		DivisionSpecifiedFields
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -290,6 +304,27 @@ public extension Database {
 		CorpsSpecifiedFields,
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
+		Fields,
+		PlacementSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingPlacementFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields,
 		Fields
 	> {
 		.init(store: store)
@@ -311,7 +346,8 @@ public extension Database<
 	Corps.IDFields,
 	Feature.IDFields,
 	Ensemble.IDFields,
-	Division.IDFields
+	Division.IDFields,
+	Placement.IDFields
 > {
 	init() async {
 		store = try! await Self.createStore(named: "DrumKit")

@@ -45,7 +45,9 @@ extension PerformanceRow: Row {
 	public var identifiedModelID: Performance.ID? { id }
 
 	public var valueSet: ValueSet<Performance.Identified> {
-		var valueSet: ValueSet<Performance.Identified> = [\.placement == placement.id]
+		var valueSet: ValueSet<Performance.Identified> = [
+			\.placement == placement.id
+		]
 
 		if let corps {
 			valueSet = valueSet.update(with: [\.corps == corps.id])
