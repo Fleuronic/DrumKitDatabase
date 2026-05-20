@@ -24,13 +24,13 @@ public extension CorpsRow {
 		id: Corps.ID? = nil,
 		name: String? = nil,
 		url: URL? = nil,
-		isActive: Bool = false,
+		isActive: Bool? = nil,
 		location: Location.IDFields? = nil
 	) {
 		self.id = id ?? .null
 		self.name = name ?? ""
 		self.url = url
-		self.isActive = isActive
+		self.isActive = isActive ?? false
 		self.location = location ?? .null
 	}
 }
