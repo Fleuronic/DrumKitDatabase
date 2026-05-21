@@ -14,8 +14,8 @@ import protocol Catenoid.Row
 public struct PerformanceRow {
 	public let id: Performance.ID
 
-	private let corps: Corps.IDFields?
-	private let ensemble: Ensemble.IDFields?
+	private let corps: Corps.IDFields
+	private let ensemble: Ensemble.IDFields
 	private let placement: Placement.IDFields
 
 	public init(
@@ -25,8 +25,8 @@ public struct PerformanceRow {
 		placement: Placement.IDFields? = nil
 	) {
 		self.id = id ?? .null
-		self.corps = corps
-		self.ensemble = ensemble
+		self.corps = corps ?? .null
+		self.ensemble = ensemble ?? .null
 		self.placement = placement ?? .null
 	}
 }
@@ -45,18 +45,10 @@ extension PerformanceRow: Row {
 	public var identifiedModelID: Performance.ID? { id }
 
 	public var valueSet: ValueSet<Performance.Identified> {
-		var valueSet: ValueSet<Performance.Identified> = [
-			\.placement == placement.id
+		[
+			\.placement == placement.id,
+			\.corps == corps.id,
+			\.ensemble == ensemble.id
 		]
-
-		if let corps {
-			valueSet = valueSet.update(with: [\.corps == corps.id])
-		} else if let ensemble {
-			valueSet = valueSet.update(with: [\.ensemble == ensemble.id])
-		} else {
-			valueSet = valueSet.update(with: [\.corps == .null, \.ensemble == .null])
-		}
-
-		return valueSet
 	}
 }
