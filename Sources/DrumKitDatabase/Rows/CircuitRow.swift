@@ -12,21 +12,21 @@ public struct CircuitRow {
 	public let id: Circuit.ID
 
 	private let name: String
-	private let abbreviation: String
+	private let abbreviation: String?
 	private let url: URL?
 }
 
 // MARK: -
 public extension CircuitRow {
 	init(
-		id: Circuit.ID?, 
+		id: Circuit.ID?,
 		name: String? = nil,
 		abbreviation: String? = nil,
 		url: URL? = nil
 	) {
 		self.id = id ?? .null
 		self.name = name ?? ""
-		self.abbreviation = abbreviation ?? ""
+		self.abbreviation = abbreviation
 		self.url = url
 	}
 }
