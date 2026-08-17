@@ -351,6 +351,17 @@ public extension Database<
 > {
 	init() async {
 		store = try! await Self.createStore(named: "DrumKit")
+		store.createIndex("ix_events_date", on: "events", columns: ["date"])
+		store.createIndex("ix_slots_event", on: "slots", columns: ["event"])
+		store.createIndex("ix_perf_corps", on: "performances", columns: ["corps"])
+		store.createIndex("ix_perf_ens", on: "performances", columns: ["ensemble"])
+		store.createIndex("ix_perf_pl", on: "performances", columns: ["placement"])
+		store.createIndex("ix_loc_state", on: "locations", columns: ["state"])
+		store.createIndex("ix_state_country", on: "states", columns: ["country"])
+		store.createIndex("ix_div_circ", on: "divisions", columns: ["circuit"])
+		store.createIndex("ix_c_loc", on: "corps", columns: ["location"])
+		store.createIndex("ix_en_loc", on: "ensembles", columns: ["location"])
+		store.createIndex("ix_pl_div", on: "placements", columns: ["division"])
 	}
 }
 
