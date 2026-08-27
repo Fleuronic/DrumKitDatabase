@@ -332,23 +332,7 @@ public extension Database {
 }
 
 // MARK: -
-public extension Database<
-	Event.IDFields,
-	Location.IDFields,
-	State.IDFields,
-	Country.IDFields,
-	Circuit.IDFields,
-	Show.IDFields,
-	Venue.IDFields,
-	Address.IDFields,
-	ZIPCode.IDFields,
-	Slot.IDFields,
-	Corps.IDFields,
-	Feature.IDFields,
-	Ensemble.IDFields,
-	Division.IDFields,
-	Placement.IDFields
-> {
+public extension Database {
 	init() async {
 		store = try! await Self.createStore(named: "DrumKit")
 		store.createIndex("ix_events_date", on: "events", columns: ["date"])
