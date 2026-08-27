@@ -335,6 +335,15 @@ public extension Database {
 public extension Database {
 	init() async {
 		store = try! await Self.createStore(named: "DrumKit")
+
+		createIndexes()
+		await seedNullObjects()
+	}
+}
+
+// MARK: -
+private extension Database {
+	func createIndexes() {
 		store.createIndex("ix_events_date", on: "events", columns: ["date"])
 		store.createIndex("ix_slots_event", on: "slots", columns: ["event"])
 		store.createIndex("ix_perf_corps", on: "performances", columns: ["corps"])
@@ -346,6 +355,23 @@ public extension Database {
 		store.createIndex("ix_c_loc", on: "corps", columns: ["location"])
 		store.createIndex("ix_en_loc", on: "ensembles", columns: ["location"])
 		store.createIndex("ix_pl_div", on: "placements", columns: ["division"])
+	}
+
+	func seedNullObjects() async {
+		_ = await insert(CountryRow(id: nil))
+		_ = await insert(StateRow(id: nil))
+		_ = await insert(LocationRow(id: nil))
+		_ = await insert(ZIPCodeRow(id: nil, code: nil))
+		_ = await insert(AddressRow(id: nil, streetAddress: nil, location: nil, zipCode: nil))
+		_ = await insert(CircuitRow(id: nil))
+		_ = await insert(ShowRow(id: nil, name: nil))
+		_ = await insert(VenueRow(id: nil, name: nil, host: nil, address: nil))
+		_ = await insert(DivisionRow(id: nil))
+		_ = await insert(FeatureRow(id: nil, name: nil))
+		_ = await insert(CorpsRow(id: nil))
+		_ = await insert(EnsembleRow(id: nil))
+		_ = await insert(PlacementRow(id: nil))
+		_ = await insert(PerformanceRow(id: nil))
 	}
 }
 
