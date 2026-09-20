@@ -346,6 +346,7 @@ private extension Database {
 	func createIndexes() {
 		store.createIndex("ix_events_date", on: "events", columns: ["date"])
 		store.createIndex("ix_slots_event", on: "slots", columns: ["event"])
+		store.createIndex("ix_slots_perf", on: "slots", columns: ["performance"])
 		store.createIndex("ix_perf_corps", on: "performances", columns: ["corps"])
 		store.createIndex("ix_perf_ens", on: "performances", columns: ["ensemble"])
 		store.createIndex("ix_perf_pl", on: "performances", columns: ["placement"])
