@@ -337,6 +337,7 @@ public extension Database {
 		store = try! await Self.createStore(named: "DrumKit")
 
 		createIndexes()
+		store.analyze()
 		await seedNullObjects()
 	}
 }
