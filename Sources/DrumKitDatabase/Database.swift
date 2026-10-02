@@ -396,7 +396,11 @@ extension Database: Catenoid.Database {
 			Performance.Identified.self,
 			Placement.Identified.self,
 			Division.Identified.self,
-			Feature.Identified.self
+			Feature.Identified.self,
+			CorpsEra.Identified.self,
+			DivisionRank.Identified.self,
+			DivisionSubordination.Identified.self,
+			FeatureRole.Identified.self
 		]
 	}
 
