@@ -6,6 +6,6 @@ import protocol Catena.Scoped
 import protocol Catenoid.Fields
 import protocol DrumKitService.CircuitSpec
 
-extension Database: CircuitSpec where CircuitSpecifiedFields: Decodable {
+extension Database: CircuitSpec where CircuitSpecifiedFields: Fields<Circuit.Identified> & Decodable {
 	public typealias CircuitFetch = SingleResult<CircuitSpecifiedFields?>
 }

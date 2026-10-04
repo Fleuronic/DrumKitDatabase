@@ -6,6 +6,6 @@ import protocol Catena.Scoped
 import protocol Catenoid.Fields
 import protocol DrumKitService.CountrySpec
 
-extension Database: CountrySpec where CountrySpecifiedFields: Decodable {
+extension Database: CountrySpec where CountrySpecifiedFields: Fields<Country.Identified> & Decodable {
 	public typealias CountryFetch = SingleResult<CountrySpecifiedFields?>
 }

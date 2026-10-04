@@ -6,6 +6,6 @@ import protocol Catena.Scoped
 import protocol Catenoid.Fields
 import protocol DrumKitService.VenueSpec
 
-extension Database: VenueSpec where VenueSpecifiedFields: Decodable {
+extension Database: VenueSpec where VenueSpecifiedFields: Fields<Venue.Identified> & Decodable {
 	public typealias VenueFetch = SingleResult<VenueSpecifiedFields?>
 }

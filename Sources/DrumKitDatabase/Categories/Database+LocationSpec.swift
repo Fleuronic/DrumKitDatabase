@@ -6,6 +6,6 @@ import protocol Catena.Scoped
 import protocol Catenoid.Fields
 import protocol DrumKitService.LocationSpec
 
-extension Database: LocationSpec where LocationSpecifiedFields: Decodable {
+extension Database: LocationSpec where LocationSpecifiedFields: Fields<Location.Identified> & Decodable {
 	public typealias LocationFetch = SingleResult<LocationSpecifiedFields?>
 }

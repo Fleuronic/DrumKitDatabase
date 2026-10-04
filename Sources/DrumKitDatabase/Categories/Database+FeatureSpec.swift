@@ -6,6 +6,6 @@ import protocol Catena.Scoped
 import protocol Catenoid.Fields
 import protocol DrumKitService.FeatureSpec
 
-extension Database: FeatureSpec where FeatureSpecifiedFields: Decodable {
+extension Database: FeatureSpec where FeatureSpecifiedFields: Fields<Feature.Identified> & Decodable {
 	public typealias FeatureFetch = SingleResult<FeatureSpecifiedFields?>
 }

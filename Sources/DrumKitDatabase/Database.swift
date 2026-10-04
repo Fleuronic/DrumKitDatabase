@@ -6,25 +6,28 @@ import PersistDB
 import DrumKit
 import DrumKitService
 import protocol Catenoid.Database
-import protocol Catenoid.Fields
 import protocol Caesura.Storage
 
 public struct Database<
-	EventSpecifiedFields: EventFields & Fields<Event.Identified>,
-	LocationSpecifiedFields: LocationFields & Fields<Location.Identified>,
-	StateSpecifiedFields: StateFields & Fields<State.Identified>,
-	CountrySpecifiedFields: CountryFields & Fields<Country.Identified>,
-	CircuitSpecifiedFields: CircuitFields & Fields<Circuit.Identified>,
-	ShowSpecifiedFields: ShowFields & Fields<Show.Identified>,
-	VenueSpecifiedFields: VenueFields & Fields<Venue.Identified>,
-	AddressSpecifiedFields: AddressFields & Fields<Address.Identified>,
-	ZIPCodeSpecifiedFields: ZIPCodeFields & Fields<ZIPCode.Identified>,
-	SlotSpecifiedFields: SlotFields & Fields<Slot.Identified>,
-	CorpsSpecifiedFields: CorpsFields & Fields<Corps.Identified>,
-	FeatureSpecifiedFields: FeatureFields & Fields<Feature.Identified>,
-	EnsembleSpecifiedFields: EnsembleFields & Fields<Ensemble.Identified>,
-	DivisionSpecifiedFields: DivisionFields & Fields<Division.Identified>,
-	PlacementSpecifiedFields: PlacementFields & Fields<Placement.Identified>
+	EventSpecifiedFields: EventFields,
+	LocationSpecifiedFields: LocationFields,
+	StateSpecifiedFields: StateFields,
+	CountrySpecifiedFields: CountryFields,
+	CircuitSpecifiedFields: CircuitFields,
+	ShowSpecifiedFields: ShowFields,
+	VenueSpecifiedFields: VenueFields,
+	AddressSpecifiedFields: AddressFields,
+	ZIPCodeSpecifiedFields: ZIPCodeFields,
+	SlotSpecifiedFields: SlotFields,
+	CorpsSpecifiedFields: CorpsFields,
+	FeatureSpecifiedFields: FeatureFields,
+	EnsembleSpecifiedFields: EnsembleFields,
+	DivisionSpecifiedFields: DivisionFields,
+	PlacementSpecifiedFields: PlacementFields,
+	CorpsEraSpecifiedFields: CorpsEraFields,
+	DivisionRankSpecifiedFields: DivisionRankFields,
+	DivisionSubordinationSpecifiedFields: DivisionSubordinationFields,
+	FeatureRoleSpecifiedFields: FeatureRoleFields
 >: @unchecked Sendable {
 	public let store: Store<ReadWrite>
 }
@@ -45,7 +48,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -65,7 +72,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -85,7 +96,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -105,7 +120,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -125,7 +144,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -145,7 +168,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -165,7 +192,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -185,7 +216,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -205,7 +240,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -225,7 +264,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -245,7 +288,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -265,7 +312,11 @@ public extension Database {
 		Fields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -285,7 +336,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		Fields,
 		DivisionSpecifiedFields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -305,7 +360,11 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		Fields,
-		PlacementSpecifiedFields
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
 	> {
 		.init(store: store)
 	}
@@ -325,6 +384,106 @@ public extension Database {
 		FeatureSpecifiedFields,
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
+		Fields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingCorpsEraFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields,
+		Fields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingDivisionRankFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		Fields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingDivisionSubordinationFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		Fields,
+		FeatureRoleSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingFeatureRoleFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
 		Fields
 	> {
 		.init(store: store)

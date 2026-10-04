@@ -6,6 +6,6 @@ import protocol Catena.Scoped
 import protocol Catenoid.Fields
 import protocol DrumKitService.StateSpec
 
-extension Database: StateSpec where StateSpecifiedFields: Decodable {
+extension Database: StateSpec where StateSpecifiedFields: Fields<State.Identified> & Decodable {
 	public typealias StateFetch = SingleResult<StateSpecifiedFields?>
 }

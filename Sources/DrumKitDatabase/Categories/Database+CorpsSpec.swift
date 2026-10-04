@@ -5,7 +5,7 @@ import protocol Catena.Scoped
 import protocol Catenoid.Fields
 import protocol DrumKitService.CorpsSpec
 
-extension Database: CorpsSpec where CorpsSpecifiedFields: Decodable {
+extension Database: CorpsSpec where CorpsSpecifiedFields: Fields<Corps.Identified> & Decodable {
 	public typealias CorpsList = Results<CorpsSpecifiedFields>
 	public typealias CorpsFetch = SingleResult<CorpsSpecifiedFields?>
 }

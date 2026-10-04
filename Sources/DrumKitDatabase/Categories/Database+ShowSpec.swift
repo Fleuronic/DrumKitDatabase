@@ -6,6 +6,6 @@ import protocol Catena.Scoped
 import protocol Catenoid.Fields
 import protocol DrumKitService.ShowSpec
 
-extension Database: ShowSpec where ShowSpecifiedFields: Decodable {
+extension Database: ShowSpec where ShowSpecifiedFields: Fields<Show.Identified> & Decodable {
 	public typealias ShowFetch = SingleResult<ShowSpecifiedFields?>
 }
