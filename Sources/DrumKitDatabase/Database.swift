@@ -25,6 +25,7 @@ public struct Database<
 	DivisionSpecifiedFields: DivisionFields,
 	PlacementSpecifiedFields: PlacementFields,
 	CorpsEraSpecifiedFields: CorpsEraFields,
+	VenueEraSpecifiedFields: VenueEraFields,
 	DivisionRankSpecifiedFields: DivisionRankFields,
 	DivisionSubordinationSpecifiedFields: DivisionSubordinationFields,
 	FeatureRoleSpecifiedFields: FeatureRoleFields
@@ -50,6 +51,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -74,6 +76,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -98,6 +101,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -122,6 +126,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -146,6 +151,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -170,6 +176,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -194,6 +201,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -218,6 +226,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -242,6 +251,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -266,6 +276,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -290,6 +301,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -314,6 +326,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -338,6 +351,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -362,6 +376,7 @@ public extension Database {
 		Fields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -386,6 +401,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		Fields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -409,6 +425,32 @@ public extension Database {
 		EnsembleSpecifiedFields,
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
+		Fields,
+		VenueEraSpecifiedFields,
+		DivisionRankSpecifiedFields,
+		DivisionSubordinationSpecifiedFields,
+		FeatureRoleSpecifiedFields
+	> {
+		.init(store: store)
+	}
+
+	func specifyingVenueEraFields<Fields>(_: Fields.Type) -> Database<
+		EventSpecifiedFields,
+		LocationSpecifiedFields,
+		StateSpecifiedFields,
+		CountrySpecifiedFields,
+		CircuitSpecifiedFields,
+		ShowSpecifiedFields,
+		VenueSpecifiedFields,
+		AddressSpecifiedFields,
+		ZIPCodeSpecifiedFields,
+		SlotSpecifiedFields,
+		CorpsSpecifiedFields,
+		FeatureSpecifiedFields,
+		EnsembleSpecifiedFields,
+		DivisionSpecifiedFields,
+		PlacementSpecifiedFields,
+		CorpsEraSpecifiedFields,
 		Fields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
@@ -434,6 +476,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		Fields,
 		DivisionSubordinationSpecifiedFields,
 		FeatureRoleSpecifiedFields
@@ -458,6 +501,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		Fields,
 		FeatureRoleSpecifiedFields
@@ -482,6 +526,7 @@ public extension Database {
 		DivisionSpecifiedFields,
 		PlacementSpecifiedFields,
 		CorpsEraSpecifiedFields,
+		VenueEraSpecifiedFields,
 		DivisionRankSpecifiedFields,
 		DivisionSubordinationSpecifiedFields,
 		Fields
@@ -557,6 +602,7 @@ extension Database: Catenoid.Database {
 			Division.Identified.self,
 			Feature.Identified.self,
 			CorpsEra.Identified.self,
+			VenueEra.Identified.self,
 			DivisionRank.Identified.self,
 			DivisionSubordination.Identified.self,
 			FeatureRole.Identified.self
