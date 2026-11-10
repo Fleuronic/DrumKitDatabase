@@ -23,4 +23,11 @@ public extension Database where SlotSpecifiedFields: AnonymousFields<Slot.Identi
 			distinct: false
 		)
 	}
+
+	func listPerformanceSlots(in year: Int, forCorpsNamed names: [String]) async -> Results<SlotSpecifiedFields> {
+		await fetchAnonymous(
+			where: Slot.Identified.predicate(year: year) && \Slot.Identified.performance.id != Performance.ID.null && names.contains(\Slot.Identified.performance.corps.value.name),
+			distinct: false
+		)
+	}
 }
