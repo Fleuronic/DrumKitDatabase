@@ -11,6 +11,7 @@ public struct LocationRow {
 	public let id: Location.ID
 
 	private let city: String
+	private let timeZone: String?
 	private let state: State.IDFields
 }
 
@@ -18,10 +19,12 @@ public extension LocationRow {
 	init(
 		id: Location.ID?,
 		city: String? = nil,
+		timeZone: String? = nil,
 		state: State.IDFields? = nil
 	) {
 		self.id = id ?? .null
 		self.city = city ?? ""
+		self.timeZone = timeZone
 		self.state = state ?? .null
 	}
 }
@@ -33,7 +36,10 @@ extension LocationRow: Row {
 
 	// MARK: Representable
 	public var value: Value {
-		.init(city: city)
+		.init(
+			city: city,
+			timeZone: timeZone
+		)
 	}
 
 	// MARK: Model
@@ -42,6 +48,7 @@ extension LocationRow: Row {
 	public var valueSet: ValueSet<Location.Identified> {
 		[
 			\.value.city == city,
+			\.value.timeZone == timeZone,
 			\.state == state.id
 		]
 	}
