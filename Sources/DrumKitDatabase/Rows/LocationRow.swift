@@ -10,7 +10,7 @@ import protocol Catenoid.Row
 public struct LocationRow {
 	public let id: Location.ID
 
-	private let city: String
+	private let city: String?
 	private let timeZone: String?
 	private let state: State.IDFields
 }
@@ -23,7 +23,7 @@ public extension LocationRow {
 		state: State.IDFields? = nil
 	) {
 		self.id = id ?? .null
-		self.city = city ?? ""
+		self.city = city
 		self.timeZone = timeZone
 		self.state = state ?? .null
 	}
