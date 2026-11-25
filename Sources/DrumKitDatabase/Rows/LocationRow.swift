@@ -3,6 +3,7 @@
 import PersistDB
 import struct DrumKit.Location
 import struct DrumKit.State
+import struct DrumKit.Country
 import struct DrumKitService.IdentifiedLocation
 import struct Catena.IDFields
 import protocol Catenoid.Row
@@ -13,6 +14,7 @@ public struct LocationRow {
 	private let city: String?
 	private let timeZone: String?
 	private let state: State.IDFields
+	private let country: Country.IDFields
 }
 
 public extension LocationRow {
@@ -20,12 +22,14 @@ public extension LocationRow {
 		id: Location.ID?,
 		city: String? = nil,
 		timeZone: String? = nil,
-		state: State.IDFields? = nil
+		state: State.IDFields? = nil,
+		country: Country.IDFields? = nil
 	) {
 		self.id = id ?? .null
 		self.city = city
 		self.timeZone = timeZone
 		self.state = state ?? .null
+		self.country = country ?? .null
 	}
 }
 
@@ -49,7 +53,8 @@ extension LocationRow: Row {
 		[
 			\.value.city == city,
 			\.value.timeZone == timeZone,
-			\.state == state.id
+			\.state == state.id,
+			\.country == country.id
 		]
 	}
 }
